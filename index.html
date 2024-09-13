@@ -93,6 +93,52 @@
 					</section>
 					<section data-markdown>
 						<script type="text/template">
+							## Improved explanations 3
+
+							![](./img/bndrun6.png)
+
+							<!-- .element: class="r-stretch" -->
+
+							- Resolution now respects the loglevel set via `-resolvedebug`
+							- show a part of this log at the end with a pointer to the larger logfile on disk
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Improved explanations 4
+
+							- `Uses constraint violation` errors are now logged
+
+							```
+							Uses constraint violation. Unable to resolve resource BundleB [BundleB version=1.0.0.SNAPSHOT] because it is exposed to package 'com.example.util.internal' from resources BundleA [BundleA version=1.0.0.SNAPSHOT] and BundleA2 [BundleA2 version=1.0.0.SNAPSHOT] via two dependency chains.
+
+							Chain 1:
+							  BundleB [BundleB version=1.0.0.SNAPSHOT]
+								import: (&(osgi.wiring.package=com.example.util.internal)(version>=1.0.0)(version<=1.0.0))
+								 |
+								export: osgi.wiring.package: com.example.util.internal
+							  BundleA [BundleA version=1.0.0.SNAPSHOT]
+							
+							Chain 2:
+							  BundleB [BundleB version=1.0.0.SNAPSHOT]
+								import: (&(osgi.wiring.package=com.example.util)(version>=1.0.0)(version<=1.0.0))
+								 |
+								export: osgi.wiring.package=com.example.util; uses:=com.example.util.internal
+							  BundleA2 [BundleA2 version=1.0.0.SNAPSHOT]
+								import: (&(osgi.wiring.package=com.example.util.internal)(version>=1.1.0)(!(version>=2.0.0)))
+								 |
+								export: osgi.wiring.package: com.example.util.internal
+							  BundleA2 [BundleA2 version=1.0.0.SNAPSHOT]
+							```
+
+							<!-- .element: class="r-stretch" -->
+							
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
 							## Experiments with multiple resolution modals.
 
 							![](./img/bndrun3.png)
