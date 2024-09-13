@@ -45,10 +45,13 @@
 					<script type="text/template">
 						## TOC
 
+						
 						1. _.bndrun_ View 
 						2. Resolution View enhancements
 						3. Repository Browser
 						rowser
+						
+						Based on https://github.com/bndtools/bnd/wiki/Changes-in-7.1.0
 
 					</script>
 				</section>
@@ -60,6 +63,7 @@
 							## _.bndrun_ View 
 
 							![](./img/bndrun0.png)
+
 
 						</script>
 					</section>
@@ -73,9 +77,15 @@
 					</section>
 					<section data-markdown>
 						<script type="text/template">
-							## Improved explanations.
+							## Improved explanations 1
 
 							![](./img/bndrun1.png)
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Improved explanations 2
 
 							![](./img/bndrun2.png)
 
@@ -101,6 +111,60 @@
 
 						</script>
 					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## improved handling of versions
+
+							... when adding a bundle to `-runrequires` or `-runbundles`
+
+							![](./img/bndrun5.png)
+
+							<!-- .element: class="r-stretch" -->
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							
+							```
+							# adding to -runrequires
+							biz.aQute.bnd;version=7.1.0.202409121924-SNAPSHOT
+							
+							# now adds version range up to (excluding) next major
+							-runrequires: bnd.identity;id='biz.aQute.bnd';version='[7.1.0,8.0.0)'
+							```
+							
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							
+							```
+							# adding a local bundle to -runbundles
+							biz.aQute.bnd;version=7.1.0.202409121924-SNAPSHOT
+							
+							# now adds snapshot for local bundles
+							-runbundles: biz.aQute.bnd;version=snapshot
+
+							```
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							
+							```
+							# adding a bundle e.g. from maven repo to -runbundles
+							assertj-core;version=3.24.2
+							
+							# now adds narrow range
+							-runbundles: assertj-core;version='[3.24.2,3.24.3)'
+							```
+
+						</script>
+					</section>
+					
 					<section>
 						<h2>Basement Level 2</h2>
 						<p>That's it, time to go back up.</p>
@@ -541,6 +605,7 @@ Reveal.on( 'customevent', function() {
 			// Also available as an ES module, see:
 			// https://revealjs.com/initialization/
 			Reveal.initialize({
+				width: '100%',
 				controls: true,
 				progress: true,
 				center: true,
