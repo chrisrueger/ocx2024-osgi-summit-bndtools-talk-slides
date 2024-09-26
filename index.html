@@ -62,6 +62,7 @@
 						<script type="text/template">
 							## _.bndrun_ View 
 
+							<!-- .element: class="r-stretch" -->
 							![](./img/bndrun0.png)
 
 
@@ -69,7 +70,7 @@
 					</section>
 					<section data-markdown>
 						<script type="text/template">
-							## Resolution failure being like...
+							## Resolution failure
 
 							![](./img/2024-09-13-12-05-51.png)
 
@@ -83,6 +84,7 @@
 
 						</script>
 					</section>
+					
 					<section data-markdown>
 						<script type="text/template">
 							## Improved explanations 2
@@ -110,8 +112,14 @@
 
 							- `Uses constraint violation` errors are now logged
 
-							```
-							Uses constraint violation. Unable to resolve resource BundleB [BundleB version=1.0.0.SNAPSHOT] because it is exposed to package 'com.example.util.internal' from resources BundleA [BundleA version=1.0.0.SNAPSHOT] and BundleA2 [BundleA2 version=1.0.0.SNAPSHOT] via two dependency chains.
+							```js
+							Uses constraint violation. Unable to resolve resource BundleB [BundleB version=1.0.0.SNAPSHOT] 
+							because it is exposed to package 'com.example.util.internal' 
+							 from resources
+							BundleA [BundleA version=1.0.0.SNAPSHOT] 
+							and 
+							BundleA2 [BundleA2 version=1.0.0.SNAPSHOT] 
+							via two dependency chains.
 
 							Chain 1:
 							  BundleB [BundleB version=1.0.0.SNAPSHOT]
