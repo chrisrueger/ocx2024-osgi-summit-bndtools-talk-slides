@@ -351,6 +351,73 @@
 					</section>
 				</section>
 
+
+				<!-- Repositories -->
+				<section>
+					<section data-markdown>
+						<script type="text/template">
+							## Repo Browser
+
+							![](./img/repobrowser1.png)
+
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Copy to Clipboard
+
+							![](./img/repobrowser2.png)
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Update Revisions
+
+							- dependabot-like updates of dependencies in .mvn file
+							- same as `bnd mbr update -s micro`
+
+							![](./img/repobrowser3.png)
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Advanced Search
+
+							![](./img/repobrowser4.png)
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Advanced Search Result
+
+							- double click -> Jar File Viewer
+
+							![](./img/repobrowser5.png)
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Jar File viewer
+
+							![](./img/jarviewer1.png)
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Jar viewer
+
+							![](./img/jarviewer2.png)
+
+						</script>
+					</section>
+				</section>
+
 				<!-- Other -->
 				<section>
 					<section data-markdown>
@@ -361,11 +428,12 @@
 					</section>
 					<section data-markdown>
 						<script type="text/template">
-							## No unversioned self-imports in Manifest
+							## bnd - No unversioned self-imports in Manifest
 
 							.. anymore
 
-							> Import-Package (coming from Export-Package) are no longer automatically added to generated Manifest anymore, if the export does not specify a version. 
+							> Import-Package (coming from Export-Package) are no longer automatically added to generated Manifest anymore, 
+						*if* the export does not specify a version. 
 
 						</script>
 					</section>
@@ -388,8 +456,14 @@
 						<script type="text/template">
 							## Why is this good?
 
-							TODO
-						</script>
+							- avoid (surprising) resolution problems
+							- especially when deploying same bundle in different versions 
+							- gson 10.1 and gson 11.0 exported `gson.annotation` package
+							- caused package substitution
+							- -> `gson.annotation` of 10.1 was substituted by 11.0
+							- thus bundles importing 10.1 became unresolvable
+						
+            </script>
 					</section>
 				</section>
 
