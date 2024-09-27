@@ -20,6 +20,9 @@
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+
+		<!-- my own customizations -->
+		<link rel="stylesheet" href="custom.css">
 	</head>
 
 	<body>
@@ -46,10 +49,13 @@
 						## TOC
 
 						
-						1. _.bndrun_ View 
-						2. Resolution View enhancements
-						3. Repository Browser
+						1. _.bndrun_ 
+						2. Templates
+						3. Resolution View enhancements
+						4. Repo Browser
 						rowser
+						5. Magic Repos
+						6. bnd core
 						
 						Based on https://github.com/bndtools/bnd/wiki/Changes-in-7.1.0
 
@@ -422,12 +428,51 @@
 						</script>
 					</section>
 				</section>
+				
+				<!-- Repositories 2 -->
+				<section>
+					<section data-markdown>
+						<script type="text/template">
+							## Magic Repos via .pmvn
+
+							![](img/repo-auto1.png)
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## .mvn file 
+							
+							- Maven GAV coordinates
+							- in [cnf/ext](https://bndtools.org/concepts.html#workspacerepositoriesproject-model) folder 
+
+							```
+								# name = Example
+								# releaseUrl = https://repo.maven.apache.org/maven2/
+								biz.aQute.bnd:biz.aQute.bndlib:7.0.0
+								biz.aQute.bnd:aQute.libg:7.0.0
+								biz.aQute.bnd:biz.aQute.launchpad:7.0.0
+								biz.aQute.bnd:biz.aQute.bnd.runtime.gogo:7.0.0
+								biz.aQute.bnd:biz.aQute.bnd.runtime.snapshot:7.0.0
+								biz.aQute:biz.aQute.osgi.templates:1.10.0
+							```
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## also works with OSGiRepository
+
+							- just use file extension `.pobr`
+							- WIP: support `BndPomRepository` for `pom.xml` via `.pxml`							
+						</script>
+					</section>
+				</section>
 
 				<!-- Other -->
 				<section>
 					<section data-markdown>
 						<script type="text/template">
-							## Noteworthy
+							## bnd core
 
 						</script>
 					</section>
@@ -462,13 +507,13 @@
 							## Why is this good?
 
 							- avoid (surprising) resolution problems
-							- especially when deploying same bundle in different versions 
-							- gson 10.1 and gson 11.0 exported `gson.annotation` package
+							- different versions same bundle 
+								- gson `10.1` & `11.0` exported `gson.annotation` package
 							- caused package substitution
-							- -> `gson.annotation` of 10.1 was substituted by 11.0
-							- thus bundles importing 10.1 became unresolvable
+								- -> `gson.annotation` of 10.1 was substituted by 11.0
+								- -> bundles importing 10.1 became unresolvable
 						
-            </script>
+            			</script>
 					</section>
 				</section>
 
