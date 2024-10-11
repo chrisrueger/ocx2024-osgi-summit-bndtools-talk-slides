@@ -542,6 +542,78 @@
 					</section>
 					<section data-markdown>
 						<script type="text/template">
+							## META-INF/services processing
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## META-INF/services annotations
+
+							```
+								META-INF/services/com.example.ServiceType:
+									#import aQute.bnd.annotation.spi.ServiceProvider
+									#@ServiceProvider(resolution:=optional)
+									com.example.impl.Impl2
+									#@ServiceProvider(attribute:List<String>="a=1, b=2")
+									com.example.impl.Impl1
+							```
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## META-INF/services annotations
+
+							and bnd generates these headers for you:
+							- Provide-Capability
+							- Require-Capability
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## it becomes easier with
+							
+							-metainf-services: auto
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+						## Wrap a lib with META-INF/services
+
+						groovy-3.0.22.jar
+
+						![](img/metainf-services1.png)
+						
+						```
+						groovy.grape.GrabAnnotationTransformation
+						```
+
+						```
+						# bnd.bnd
+						-includeresource: @lib/groovy-3.0.22.jar
+						-metainf-services: auto	
+						```
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+						## Get this
+						```
+						# MANIFEST.MF
+						Provide-Capability: osgi.service;objectClass:List<String>="org.codehaus.groovy.transform.ASTTransformation";effective:=active
+											osgi.serviceloader;osgi.serviceloader="org.codehaus.groovy.transform.ASTTransformation";register:="groovy.grape.GrabAnnotationTransformation"
+						Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+											osgi.extender;filter:="(&(osgi.extender=osgi.serviceloader.registrar)(version>=1.0.0)(!(version>=2.0.0)))";resolution:=optional
+						```
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
 							## bnd - No unversioned self-imports in Manifest
 
 							.. anymore
