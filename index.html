@@ -504,14 +504,16 @@
 					</section>
 					<section data-markdown>
 						<script type="text/template">
-							## .mvn file 
+							## .pmvn file 
 							
 							- Maven GAV coordinates
 							- in [cnf/ext](https://bndtools.org/concepts.html#workspacerepositoriesproject-model) folder 
+							- supports Tagging (tags)
 
 							```
 								# name = Example
 								# releaseUrl = https://repo.maven.apache.org/maven2/
+								# tags = resolve
 								biz.aQute.bnd:biz.aQute.bndlib:7.0.0
 								biz.aQute.bnd:aQute.libg:7.0.0
 								biz.aQute.bnd:biz.aQute.launchpad:7.0.0
@@ -608,6 +610,18 @@
 						Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
 											osgi.extender;filter:="(&(osgi.extender=osgi.serviceloader.registrar)(version>=1.0.0)(!(version>=2.0.0)))";resolution:=optional
 						```
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+						## Why all this?
+						
+						- ServiceLoaders and OSGi [are hard](https://blog.osgi.org/2013/02/javautilserviceloader-in-osgi.html)
+						- [SpyFly](https://aries.apache.org/documentation/modules/spi-fly.html) can help
+						- but SpyFly expects this OSGi Meta-Data (Provide-Capability / Require-Capability)
+						- bnd helps to add it 
+						- via 'auto' or annotations (if you need more control)
 
 						</script>
 					</section>
