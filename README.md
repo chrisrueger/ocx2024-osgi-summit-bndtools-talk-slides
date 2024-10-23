@@ -8,5 +8,7 @@ Website: https://www.ocxconf.org/event/778b82cc-6834-48a4-a58e-f883c5a7b8c9/webs
 
 ## Slides
 
-Just open the _index.html_ in your browser to view the presentation. 
+Visit https://chrisrueger.github.io/ocx2024-osgi-summit-bndtools-talk-slides/
+
+This is basically the same as opening _index.html_ in your browser to view the presentation. 
 
